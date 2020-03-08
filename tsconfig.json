@@ -8,7 +8,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "dist",
+    "outDir": "dist-ts",
     "declaration": true
   },
   "include": [

@@ -1,5 +1,5 @@
 // https://github.com/torch2424/wasm-by-example/blob/master/demo-util/
-export const getWasmBrowser = async (wasmModuleUrl: string, importObject?: WebAssembly.Imports): Promise<WebAssembly.WebAssemblyInstantiatedSource> => {
+const getWasmBrowser = async (wasmModuleUrl: string, importObject?: WebAssembly.Imports): Promise<WebAssembly.WebAssemblyInstantiatedSource> => {
   let response: WebAssembly.WebAssemblyInstantiatedSource = undefined;
 
   if (!importObject) {
@@ -31,3 +31,5 @@ export const getWasmBrowser = async (wasmModuleUrl: string, importObject?: WebAs
 
   return response;
 };
+
+export default getWasmBrowser;
