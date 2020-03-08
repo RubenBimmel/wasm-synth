@@ -1,9 +1,13 @@
-type WasmNumber = WebAssembly.Global;
+import { Exports } from "assemblyscript-loader";
 
-interface WasmModule {
+interface WasmModuleFunctions {
   add: (a: number, b: number) => number;
-  ANSWER_TO_LIFE_UNIVERSE_AND_EVERYTHING: WasmNumber;
-  // Add more exports here!
 }
 
-export type WasmExports = WasmModule & WebAssembly.Exports;
+type WasmModuleNumberKeys =
+| "ANSWER_TO_LIFE_UNIVERSE_AND_EVERYTHING"
+;
+
+export type WasmExportsBrowser = WasmModuleFunctions & {[numKey in WasmModuleNumberKeys]: WebAssembly.Global} & WebAssembly.Exports;
+
+export type WasmExports = WasmModuleFunctions & {[numKey in WasmModuleNumberKeys]: number} & Exports;

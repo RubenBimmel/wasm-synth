@@ -1,10 +1,10 @@
-import getWasmBrowser from "./wasm/get-wasm-browser";
-import { WasmExports } from "./wasm/exports";
+import { WasmExportsBrowser } from "./wasm/exports";
+import { getWasmBrowser } from "./wasm/get-wasm";
 
-const runWasmAdd = async () => {
+(async () => {
   // Instantiate our wasm module
   const wasmModule = await getWasmBrowser("./wasm/optimized.wasm");
-  const moduleExports = wasmModule.instance.exports as WasmExports;
+  const moduleExports = wasmModule.instance.exports as WasmExportsBrowser;
 
   // Call the Add function export from wasm, save the result
   const addResult = moduleExports.add(24, 24);
@@ -13,5 +13,4 @@ const runWasmAdd = async () => {
 
   // Set the result onto the body
   document.body.innerHTML = `Hello World! addResult: ${addResult} <br/> The magic number of today is: ${magicNumber}`;
-};
-runWasmAdd();
+})();
