@@ -1,8 +1,8 @@
 import { WasmExports } from "./wasm/exports";
-import { getWasm } from "./wasm/get-wasm";
+import { initWasm } from "./wasm/init-wasm";
 
 (async () => {
-  const wasmModule = await getWasm("./src/wasm/build/optimized.wasm");
+  const wasmModule = await initWasm("./src/wasm/build/optimized.wasm");
   const moduleExports = wasmModule.exports as WasmExports;
 
   console.log(`24 + 24 = ${moduleExports.add(24, 24)}`);
