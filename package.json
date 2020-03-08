@@ -1,8 +1,8 @@
 {
-  "name": "as-helloworld",
+  "name": "assemblyscript-template",
   "version": "1.0.0",
-  "description": "AssemblyScript Hello World example thingy",
-  "main": "index.js",
+  "description": "AssemblyScript template repo",
+  "main": "dist-ts/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "asbuild:untouched": "asc src/wasm/assembly/index.ts -b src/wasm/build/untouched.wasm -t src/wasm/build/untouched.wat --validate --sourceMap --debug",
