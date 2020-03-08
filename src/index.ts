@@ -1,3 +1,3 @@
-import wasm from './wasm';
+import { wasm } from "./wasm";
 
-console.log('hi');
+console.log("hi");
