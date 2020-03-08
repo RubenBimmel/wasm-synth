@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "asbuild:untouched": "asc wasm/assembly/index.ts -b wasm/build/untouched.wasm -t wasm/build/untouched.wat --validate --sourceMap --debug",
     "asbuild:optimized": "asc wasm/assembly/index.ts -b wasm/build/optimized.wasm -t wasm/build/optimized.wat --validate --sourceMap --optimize",
-    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized"
+    "asbuild": "npm run asbuild:untouched && npm run asbuild:optimized",
+    "start": "ts-node src",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,11 @@
   },
   "homepage": "https://github.com/Jirinrin/AssemblyScript-HelloWorld#readme",
   "devDependencies": {
-    "assemblyscript": "^0.9.2"
+    "assemblyscript": "^0.9.2",
+    "@types/node": "^13.9.0",
+    "ts-node": "^8.6.2",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "@assemblyscript/loader": "^0.9.2"

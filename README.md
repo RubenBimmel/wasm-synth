@@ -3,6 +3,7 @@ AssemblyScript Hello World example thingy
 To get this working:
 - `npm i`
 - `npm run asbuild`
+- `npm start`
 - Everything works!(?)
 
 
