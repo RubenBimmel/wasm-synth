@@ -4,10 +4,8 @@ interface WasmModuleFunctions {
   add: (a: number, b: number) => number;
 }
 
-type WasmModuleNumberKeys =
+type WasmModuleNumberKeys = 
 | "ANSWER_TO_LIFE_UNIVERSE_AND_EVERYTHING"
 ;
 
-export type WasmExportsBrowser = WasmModuleFunctions & {[numKey in WasmModuleNumberKeys]: WebAssembly.Global} & WebAssembly.Exports;
-
-export type WasmExports = WasmModuleFunctions & {[numKey in WasmModuleNumberKeys]: number} & Exports;
+export type WasmExports = WasmModuleFunctions & {[numKey in WasmModuleNumberKeys]: WebAssembly.Global} & WebAssembly.Exports;

@@ -1,10 +1,19 @@
 import { WasmExports } from "./wasm/exports";
 import { initWasm } from "./wasm/init-wasm";
 
-(async () => {
-  const wasmModule = await initWasm("./src/wasm/build/optimized.wasm");
-  const moduleExports = wasmModule.exports as WasmExports;
-
-  console.log(`24 + 24 = ${moduleExports.add(24, 24)}`);
-  console.log(`And a magic number is ${moduleExports.ANSWER_TO_LIFE_UNIVERSE_AND_EVERYTHING}`);
-})();
+document.getElementById('start-sound').addEventListener('click', async () => {
+  const audioContext = new AudioContext();
+  await audioContext.audioWorklet.addModule('processor/sine-processor.js');
+  const sineNode = new AudioWorkletNode(audioContext, 'sine-processor');
+  sineNode.connect(audioContext.destination);
+  
+  navigator.requestMIDIAccess()
+  .then(function(midi) {
+    const inputs = midi.inputs.values();
+    for (let input = inputs.next(); input && !input.done; input = inputs.next()) {
+      input.value.addEventListener('midimessage', (m: WebMidi.MIDIMessageEvent) => {
+        sineNode.port.postMessage(m.data);
+      })
+    }
+  });
+});

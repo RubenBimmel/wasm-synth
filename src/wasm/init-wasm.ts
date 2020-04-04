@@ -1,14 +1,7 @@
-import { Module } from "assemblyscript-loader";
-
 const defaultImportObject = { env: { abort: () => console.log("Abort!") } };
 
-export async function initWasm(wasmModulePath: string, importObject?: {[key: string]: any}): Promise<Module> {
-  const loader = require("assemblyscript-loader");
-  return loader.load(wasmModulePath, { imports: importObject ?? defaultImportObject });
-}
-
 // https://github.com/torch2424/wasm-by-example/blob/master/demo-util/
-export async function initWasmBrowser(wasmModuleUrl: string, importObject?: WebAssembly.Imports): Promise<WebAssembly.WebAssemblyInstantiatedSource> {
+export async function initWasm(wasmModuleUrl: string, importObject?: WebAssembly.Imports): Promise<WebAssembly.WebAssemblyInstantiatedSource> {
   let response: WebAssembly.WebAssemblyInstantiatedSource;
   importObject = importObject ?? defaultImportObject;
 
